@@ -31,6 +31,7 @@ export class UserComponent implements OnInit {
       const data = routeData['data'];
       if (data) {
         this.user = data;
+        this.getUserData();
         this.createForm(this.user.name, this.user.surname);
       }
     });
@@ -57,5 +58,20 @@ export class UserComponent implements OnInit {
       }, (error) => {
         console.log('Logout error', error);
       });
+  }
+
+  getUserData() {
+    this.userService.readUserData(this.user.id)
+      .then(doc => {
+        if (doc.exists) {
+          this.user.name = doc.data().username;
+          this.user.surname = doc.data().surname;
+          this.createForm(this.user.name, this.user.surname);
+        } else {
+          console.log('Usuario no encontrado');
+        }
+    }).catch(error => {
+      console.log('Error al obtener datos de usuario');
+    });
   }
 }

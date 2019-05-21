@@ -19,6 +19,7 @@ export class UserResolver implements Resolve<FirebaseUserModel> {
             user.image = 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png';
             user.name = res.displayName;
             user.provider = res.providerData[0].providerId;
+            user.id = res.uid;
             return resolve(user);
           } else {
             user.image = res.photoURL;

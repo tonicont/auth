@@ -1,0 +1,28 @@
+
+<div class="container">
+  <div class="row">
+    <h2>Lista de grupos</h2>
+  </div>
+
+  <div class="row">
+      <button type="button" class="btn btn-primary mb-5">Nuevo grupo</button>
+  </div>
+
+  <div class="row">
+      <table class="table table-striped table-bordered">
+        <thead>
+        <tr scope="row">
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let group of workgroupList; index as i">
+          <th scope="row">{{i+1}}</th>
+          <td>{{group.name}}</td>
+        </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
+

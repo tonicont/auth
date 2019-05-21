@@ -16,13 +16,15 @@ import { UserService } from './core/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { WorkgroupComponent } from './workgroup/workgroup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserComponent,
-    RegisterComponent
+    RegisterComponent,
+    WorkgroupComponent
   ],
   imports: [
     BrowserModule,

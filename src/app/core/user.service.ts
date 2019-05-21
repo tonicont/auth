@@ -13,12 +13,18 @@ export class UserService {
   static writeUserData(user) {
     firebase.firestore().collection('users').doc(user.userID).set({
       username: user.name,
-      surname: user.surname});
+      surname: user.surname
+    });
+  }
+
+  readUserData(userId) {
+    const userRef = firebase.firestore().collection('users').doc(userId);
+    return userRef.get();
   }
 
   getCurrentUser() {
     return new Promise<any>((resolve, reject) => {
-      const user = firebase.auth().onAuthStateChanged(function(user) {
+      const user = firebase.auth().onAuthStateChanged(user => {
         if (user) {
           resolve(user);
         } else {
